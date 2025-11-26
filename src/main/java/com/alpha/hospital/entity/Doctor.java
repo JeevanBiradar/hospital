@@ -1,5 +1,62 @@
 package com.alpha.hospital.entity;
 
-public class Doctor {
+import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+@Entity
+public class Doctor {
+	
+	@Id
+	private int did;
+	private String dname;
+	private String specilization;
+	
+	@OneToMany
+	List<Patient>plist;
+	
+	
+	public int getDid() {
+		return did;
+	}
+	public void setDid(int did) {
+		this.did = did;
+	}
+	public String getDname() {
+		return dname;
+	}
+	public void setDname(String dname) {
+		this.dname = dname;
+	}
+	public String getSpecilization() {
+		return specilization;
+	}
+	public void setSpecilization(String specilization) {
+		this.specilization = specilization;
+	}
+	public List<Patient> getPlist() {
+		return plist;
+	}
+	public void setPlist(List<Patient> plist) {
+		this.plist = plist;
+	}
+	public Doctor(int did, String dname, String specilization, List<Patient> plist) {
+		super();
+		this.did = did;
+		this.dname = dname;
+		this.specilization = specilization;
+		this.plist = plist;
+	}
+	public Doctor() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "Doctor [did=" + did + ", dname=" + dname + ", specilization=" + specilization + ", plist=" + plist
+				+ "]";
+	}
+	
+	
 }
