@@ -2,6 +2,7 @@ package com.alpha.hospital.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -14,7 +15,7 @@ public class Doctor {
 	private String dname;
 	private String specilization;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	List<Patient>plist;
 	
 	
