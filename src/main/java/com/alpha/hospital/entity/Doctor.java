@@ -6,13 +6,17 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Doctor {
 	
 	@Id
 	private int did;
+	@NotBlank(message="Doctor name cannot be blank")
 	private String dname;
+	@NotBlank(message="Specialization cannot be blank")
+	
 	private String specilization;
 	
 	@OneToMany(cascade = CascadeType.ALL)

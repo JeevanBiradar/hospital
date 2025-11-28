@@ -1,5 +1,7 @@
 package com.alpha.hospital.exception;
 
-public class PatientNotFoundException {
-
+public class PatientNotFoundException extends RuntimeException{
+	public PatientNotFoundException(String message) {
+		super(message);
+	}
 }

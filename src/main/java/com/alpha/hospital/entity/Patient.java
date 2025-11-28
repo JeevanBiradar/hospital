@@ -2,13 +2,16 @@ package com.alpha.hospital.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Patient {
 	
 	@Id
 	private int pid;
+	@NotBlank(message="Patient name cannot be blank")
 	private String pname;
+	@NotBlank(message="Diesese name cannot be blank")
 	private String diease;
 	
 	public int getPid() {
