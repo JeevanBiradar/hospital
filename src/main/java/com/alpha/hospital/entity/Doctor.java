@@ -12,7 +12,10 @@ public class Doctor {
 	
 	@Id
 	private int did;
+	@NotBlank(message="Doctor name cannot be blank")
 	private String dname;
+	@NotBlank(message="Specialization cannot be blank")
+	
 	private String specilization;
 	
 	@OneToMany(cascade = CascadeType.ALL)
