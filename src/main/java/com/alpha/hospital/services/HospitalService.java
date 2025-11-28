@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.alpha.hospital.ResponseStructure;
 import com.alpha.hospital.entity.Doctor;
 import com.alpha.hospital.exception.DoctorNotFoundException;
+import com.alpha.hospital.exception.DuplicateDoctorException;
 import com.alpha.hospital.repository.DoctorRepo;
 
 @Service
@@ -18,6 +19,11 @@ public class HospitalService {
     private DoctorRepo doctorRepo;
 
     public ResponseStructure<Doctor> saveDoctor(Doctor d) {
+    	
+    	if (doctorRepo.existsById(d.getDid())) {
+            throw new DuplicateDoctorException("Doctor with ID " + d.getDid() + " already exists");
+        }
+    	
         Doctor saved = doctorRepo.save(d);
         ResponseStructure<Doctor> rs = new ResponseStructure<>();
         rs.setStatusCode(HttpStatus.CREATED.value());

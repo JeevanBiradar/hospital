@@ -32,6 +32,17 @@ public class GlobalExceptionHandler {
 	    }
 	 
 	 
+	 @ExceptionHandler(DuplicateDoctorException.class)
+	    public ResponseStructure<String> handleDuplicateDoctor(DuplicateDoctorException ex) {
+
+	        ResponseStructure<String> rs = new ResponseStructure<>();
+	        rs.setStatusCode(HttpStatus.CONFLICT.value());
+	        rs.setMessage(ex.getMessage());
+	        rs.setData(null);
+
+	        return rs;
+	    }
+	 
 	 
 	 @ExceptionHandler(DataIntegrityViolationException.class)
 	   public ResponseStructure<String> handleDataIntegrity(DataIntegrityViolationException ex)
